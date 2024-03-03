@@ -1,40 +1,31 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'simple_timer.dart';
+part of 'sisyphus_timer.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class SimpleTimerAdapter extends TypeAdapter<SimpleTimer> {
+class SisyphusTimerAdapter extends TypeAdapter<SisyphusTimer> {
   @override
-  final int typeId = 1;
+  final int typeId = 3;
 
   @override
-  SimpleTimer read(BinaryReader reader) {
+  SisyphusTimer read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return SimpleTimer(
-      duration: fields[3] as Duration,
-      onTimerEnd: fields[4] as void Function(),
-      iconName: fields[5] as String,
+    return SisyphusTimer(
       timerId: fields[0] as String,
       timerName: fields[1] as String,
     );
   }
 
   @override
-  void write(BinaryWriter writer, SimpleTimer obj) {
+  void write(BinaryWriter writer, SisyphusTimer obj) {
     writer
-      ..writeByte(5)
-      ..writeByte(3)
-      ..write(obj.duration)
-      ..writeByte(4)
-      ..write(obj.onTimerEnd)
-      ..writeByte(5)
-      ..write(obj.iconName)
+      ..writeByte(2)
       ..writeByte(0)
       ..write(obj.timerId)
       ..writeByte(1)
@@ -47,7 +38,7 @@ class SimpleTimerAdapter extends TypeAdapter<SimpleTimer> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SimpleTimerAdapter &&
+      other is SisyphusTimerAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

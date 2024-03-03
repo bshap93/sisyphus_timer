@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sisyphus_timer/data/models/timers/sisyphus_timer.dart';
+import 'package:sisyphus_timer/data/models/timers/sisyphus_timer/sisyphus_timer.dart';
 import 'package:sisyphus_timer/presentation/home/home_page_bottom_options.dart';
 import 'package:sisyphus_timer/presentation/home/timers_grid.dart';
 import 'package:sisyphus_timer/presentation/theming/app_theme.dart';

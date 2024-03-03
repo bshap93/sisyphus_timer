@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:sisyphus_timer/data/models/timers/simple_timer/simple_timer.dart';
-import 'package:sisyphus_timer/data/models/timers/sisyphus_timer.dart';
+import 'package:sisyphus_timer/data/models/timers/sisyphus_timer/sisyphus_timer.dart';
 import 'package:sisyphus_timer/presentation/timer/timer_with_name_loader.dart';
 
 class TimersGrid extends StatelessWidget {
