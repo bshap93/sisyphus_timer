@@ -6,21 +6,15 @@ class AppRouter {
   static final router = GoRouter(
     routes: [
       Routes.home,
+      Routes.simpletimer,
     ],
   );
 }
 
 class Routes {
-  static final home = GoRoute(
-    path: '/',
-    name: 'home',
-    routes: [
-      GoRoute(
-        path: 'simpletimer/:timerId',
-        builder: (context, state) => const HomePage(),
-        name: 'notifications',
-      ),
-    ],
+  static final simpletimer = GoRoute(
+    name: 'simpletimer',
+    path: '/simpletimer/:timerId',
     builder: (context, state) {
       final timerId = state.pathParameters['timerId'];
       if (timerId == null) {
@@ -31,5 +25,14 @@ class Routes {
         );
       }
     },
+  );
+
+  static final home = GoRoute(
+    path: '/',
+    name: 'home',
+    builder: (context, state) => const HomePage(),
+    routes: [
+      simpletimer,
+    ],
   );
 }

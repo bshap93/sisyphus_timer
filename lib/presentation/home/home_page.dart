@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) => TimersGridPage(
         sisyphusTimers: [
           SimpleTimer.create(
-            iconName: 'assets/plus.svg',
+            iconName: 'assets/makathar.svg',
             duration: const Duration(minutes: 25),
             timerName: 'Makathar Attack',
           ),

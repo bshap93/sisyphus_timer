@@ -4,6 +4,7 @@ class AppAssets {
   static const check = 'assets/check.svg';
   static const plus = 'assets/plus.svg';
   static const hillJourney = 'assets/hill_journey.svg';
+  static const makathar = 'assets/makathar.svg';
 
   static const allTimerIcons = [];
 

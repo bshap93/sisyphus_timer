@@ -23,6 +23,8 @@ class SimpleTimerWithName extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: AnimatedSimpleTimer(
               iconName: simpleTimer.iconName,
+              completed: completed,
+              onCompleted: onCompleted,
             ),
           ),
           const SizedBox(height: 8),

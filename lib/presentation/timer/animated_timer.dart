@@ -93,20 +93,23 @@ class _AnimatedSimpleTimerState extends State<AnimatedSimpleTimer>
             final hasCompleted = progress == 1.0;
             final iconColor =
                 hasCompleted ? themeData.accentNegative : themeData.taskIcon;
-            return Stack(
-              children: [
-                TimerCompletionRing(
-                  progress: progress,
-                ),
-                Positioned.fill(
-                  child: CenteredSvgIcon(
-                    iconName: hasCompleted && _showCheckIcon
-                        ? AppAssets.check
-                        : widget.iconName,
-                    color: iconColor,
+            return Hero(
+              tag: widget.iconName,
+              child: Stack(
+                children: [
+                  TimerCompletionRing(
+                    progress: progress,
                   ),
-                ),
-              ],
+                  Positioned.fill(
+                    child: CenteredSvgIcon(
+                      iconName: hasCompleted && _showCheckIcon
+                          ? AppAssets.check
+                          : widget.iconName,
+                      color: iconColor,
+                    ),
+                  ),
+                ],
+              ),
             );
           },
         ),
