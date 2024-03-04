@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sisyphus_timer/data/models/timers/simple_timer/simple_timer.dart';
 import 'package:sisyphus_timer/presentation/home/timers_grid_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,6 +12,22 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) => TimersGridPage(
-        sisyphusTimers: [],
+        sisyphusTimers: [
+          SimpleTimer.create(
+            iconName: 'assets/plus.svg',
+            duration: const Duration(minutes: 25),
+            timerName: 'Makathar Attack',
+          ),
+          SimpleTimer.create(
+            timerName: 'Survive in a Pit of Snakes',
+            iconName: 'assets/plus.svg',
+            duration: const Duration(minutes: 5),
+          ),
+          SimpleTimer.create(
+            timerName: 'Roll back down the hill, again',
+            duration: const Duration(minutes: 25),
+            iconName: 'assets/plus.svg',
+          ),
+        ],
       );
 }

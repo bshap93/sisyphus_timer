@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sisyphus_timer/constants/text_styles.dart';
 import 'package:sisyphus_timer/data/models/timers/simple_timer/simple_timer.dart';
+import 'package:sisyphus_timer/presentation/theming/app_theme.dart';
 import 'package:sisyphus_timer/presentation/timer/animated_timer.dart';
-
-import '../theming/app_theme.dart';
 
 class SimpleTimerWithName extends StatelessWidget {
   const SimpleTimerWithName({

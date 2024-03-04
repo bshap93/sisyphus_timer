@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+	
+  
+	<!-- Drawing a simplified path with thicker lines to represent the journey's beginning -->
+	
+  
+	<path d="M10,75 Q50,25 90,75" fill="none" stroke="black" stroke-width="4"/>
+	
+  
+	<!-- Adding a circle to represent the lone figure at the start of the path, with matching line thickness -->
+	
+  
+	<circle cx="10" cy="75" r="5" fill="black"/>
+	
+
+</svg>

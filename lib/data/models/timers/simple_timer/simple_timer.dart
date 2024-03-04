@@ -10,17 +10,17 @@ part 'simple_timer.g.dart';
 class SimpleTimer extends SisyphusTimer {
   SimpleTimer({
     required this.duration,
-    required this.onTimerEnd,
     required this.iconName,
     required super.timerId,
     required super.timerName,
+    this.onTimerEnd,
   });
 
   factory SimpleTimer.create({
     required String timerName,
     required Duration duration,
-    required VoidCallback onTimerEnd,
     required String iconName,
+    VoidCallback? onTimerEnd,
   }) {
     final timerId = const Uuid().v1();
     return SimpleTimer(
@@ -35,7 +35,7 @@ class SimpleTimer extends SisyphusTimer {
   @HiveField(3)
   final Duration duration;
   @HiveField(4)
-  final VoidCallback onTimerEnd;
+  final VoidCallback? onTimerEnd;
   @HiveField(5)
   final String iconName;
 }

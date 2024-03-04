@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class AppAssets {
   static const check = 'assets/check.svg';
   static const plus = 'assets/plus.svg';
+  static const hillJourney = 'assets/hill_journey.svg';
 
   static const allTimerIcons = [];
 

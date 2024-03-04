@@ -18,10 +18,10 @@ class SimpleTimerAdapter extends TypeAdapter<SimpleTimer> {
     };
     return SimpleTimer(
       duration: fields[3] as Duration,
-      onTimerEnd: fields[4] as void Function(),
       iconName: fields[5] as String,
       timerId: fields[0] as String,
       timerName: fields[1] as String,
+      onTimerEnd: fields[4] as void Function()?,
     );
   }
 
