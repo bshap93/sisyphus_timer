@@ -7,6 +7,7 @@ import 'package:sisyphus_timer/presentation/timer/animated_timer.dart';
 class SimpleTimerWithName extends StatelessWidget {
   const SimpleTimerWithName({
     required this.simpleTimer,
+    required this.tag,
     super.key,
     this.completed,
     this.onCompleted,
@@ -14,6 +15,7 @@ class SimpleTimerWithName extends StatelessWidget {
   final SimpleTimer simpleTimer;
   final bool? completed;
   final ValueChanged<bool>? onCompleted;
+  final String tag;
 
   @override
   Widget build(BuildContext context) => Column(
@@ -25,6 +27,7 @@ class SimpleTimerWithName extends StatelessWidget {
               iconName: simpleTimer.iconName,
               completed: completed,
               onCompleted: onCompleted,
+              tag: tag,
             ),
           ),
           const SizedBox(height: 8),

@@ -6,7 +6,10 @@ import 'package:sisyphus_timer/data/models/timers/sisyphus_timer/sisyphus_timer.
 import 'package:sisyphus_timer/presentation/timer/timer_with_name_loader.dart';
 
 class TimersGrid extends StatelessWidget {
-  const TimersGrid({super.key, required this.timers});
+  const TimersGrid({
+    required this.timers,
+    super.key,
+  });
   final List<SisyphusTimer> timers;
 
   @override
@@ -33,6 +36,7 @@ class TimersGrid extends StatelessWidget {
               if (timer is SimpleTimer) {
                 return SimpleTimerWithNameLoader(
                   simpleTimer: timer,
+                  tag: timer.tag,
                 );
               }
               throw UnimplementedError('Unknown timer type: $timer');

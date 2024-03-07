@@ -21,6 +21,7 @@ class SimpleTimerAdapter extends TypeAdapter<SimpleTimer> {
       iconName: fields[5] as String,
       timerId: fields[0] as String,
       timerName: fields[1] as String,
+      tag: fields[6] as String,
       onTimerEnd: fields[4] as void Function()?,
     );
   }
@@ -28,13 +29,15 @@ class SimpleTimerAdapter extends TypeAdapter<SimpleTimer> {
   @override
   void write(BinaryWriter writer, SimpleTimer obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(3)
       ..write(obj.duration)
       ..writeByte(4)
       ..write(obj.onTimerEnd)
       ..writeByte(5)
       ..write(obj.iconName)
+      ..writeByte(6)
+      ..write(obj.tag)
       ..writeByte(0)
       ..write(obj.timerId)
       ..writeByte(1)

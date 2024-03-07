@@ -1,43 +1,47 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sisyphus_timer/app/app.dart';
+import 'package:sisyphus_timer/app/app_bloc_observer.dart';
+import 'package:sisyphus_timer/app/config/app_initializer.dart';
+import 'package:sisyphus_timer/app/router/timer_router.dart';
 import 'package:sisyphus_timer/constants/app_assets.dart';
-import 'package:sisyphus_timer/constants/app_colors.dart';
 import 'package:sisyphus_timer/data/persistence/hive_data_store.dart';
-import 'package:sisyphus_timer/presentation/home/home_page.dart';
-import 'package:sisyphus_timer/presentation/theming/app_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final globalService = await initializeApp();
+  final mainRouter = createMainRouter(globalService);
   await AppAssets.preloadSVGs();
   final dataStore = HiveDataStore();
   await dataStore.init();
 
   runApp(
-    ProviderScope(
-      overrides: [
-        dataStoreProvider.overrideWithValue(dataStore),
-      ],
-      child: const MyApp(),
-    ),
+    createApp(mainRouter, globalService),
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) => MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          fontFamily: 'Times New Roman',
-          splashColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          hoverColor: Colors.transparent,
-        ),
-        home: AppTheme(
-          data: AppThemeData.defaultWithSwatch(AppColors.aqua),
-          child: const HomePage(),
-        ),
-      );
+Future<GlobalService> initializeApp() async {
+  late GlobalService globalService;
+  if (kIsWeb) {
+    globalService = GlobalService(pfType: PlatformType.web);
+  } else {
+    globalService = GlobalService(pfType: PlatformType.mobile);
+  }
+  // final globalService = GlobalService(PlatformType.mobile);
+  await globalService.initializeApp();
+  Bloc.observer = AppBlocObserver(appLogger: globalService.appLogger);
+  return globalService;
 }
+
+final globalNavigatorKey = GlobalKey<NavigatorState>();
+
+TimerRouter createMainRouter(GlobalService globalService) => TimerRouter(
+      navigatorKey: globalNavigatorKey,
+    );
+
+Widget createApp(TimerRouter mainRouter, GlobalService globalService) =>
+    SisyphusTimerApp(
+      sisRouter: mainRouter,
+      appLogger: globalService.appLogger,
+    );

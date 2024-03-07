@@ -13,6 +13,7 @@ class SimpleTimer extends SisyphusTimer {
     required this.iconName,
     required super.timerId,
     required super.timerName,
+    required this.tag,
     this.onTimerEnd,
   });
 
@@ -20,10 +21,12 @@ class SimpleTimer extends SisyphusTimer {
     required String timerName,
     required Duration duration,
     required String iconName,
+    required String tag,
     VoidCallback? onTimerEnd,
   }) {
     final timerId = const Uuid().v1();
     return SimpleTimer(
+      tag: tag,
       timerId: timerId,
       timerName: timerName,
       duration: duration,
@@ -38,4 +41,6 @@ class SimpleTimer extends SisyphusTimer {
   final VoidCallback? onTimerEnd;
   @HiveField(5)
   final String iconName;
+  @HiveField(6)
+  final String tag;
 }

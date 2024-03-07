@@ -10,10 +10,12 @@ class AnimatedSimpleTimer extends StatefulWidget {
     this.completed,
     super.key,
     this.onCompleted,
+    required this.tag,
   });
   final String iconName;
   final bool? completed;
   final ValueChanged<bool>? onCompleted;
+  final String tag;
 
   @override
   State<AnimatedSimpleTimer> createState() => _AnimatedSimpleTimerState();
@@ -94,7 +96,7 @@ class _AnimatedSimpleTimerState extends State<AnimatedSimpleTimer>
             final iconColor =
                 hasCompleted ? themeData.accentNegative : themeData.taskIcon;
             return Hero(
-              tag: widget.iconName,
+              tag: widget.tag,
               child: Stack(
                 children: [
                   TimerCompletionRing(

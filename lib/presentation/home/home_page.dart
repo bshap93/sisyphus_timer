@@ -14,16 +14,19 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) => TimersGridPage(
         sisyphusTimers: [
           SimpleTimer.create(
+            tag: 'makathar',
             iconName: 'assets/makathar.svg',
             duration: const Duration(minutes: 25),
             timerName: 'Makathar Attack',
           ),
           SimpleTimer.create(
+            tag: 'pitOfSnakes',
             timerName: 'Survive in a Pit of Snakes',
             iconName: 'assets/plus.svg',
             duration: const Duration(minutes: 5),
           ),
           SimpleTimer.create(
+            tag: 'rollDownHill',
             timerName: 'Roll back down the hill, again',
             duration: const Duration(minutes: 25),
             iconName: 'assets/plus.svg',

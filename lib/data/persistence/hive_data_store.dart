@@ -1,4 +1,3 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/adapters.dart';
 
 class HiveDataStore {
@@ -14,7 +13,3 @@ class HiveDataStore {
     // await Hive.openBox<TaskState>(tasksStateBoxName);
   }
 }
-
-final dataStoreProvider = Provider<HiveDataStore>((ref) {
-  throw UnimplementedError();
-});
