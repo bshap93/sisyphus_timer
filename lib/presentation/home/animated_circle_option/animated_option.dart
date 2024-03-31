@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sisyphus_timer/constants/app_assets.dart';
+import 'package:sisyphus_timer/presentation/home/animated_circle_option/option_completion_ring.dart';
 import 'package:sisyphus_timer/presentation/theming/app_theme.dart';
-import 'package:sisyphus_timer/presentation/timer/timer_completion_ring.dart';
 import 'package:sisyphus_timer/presentation/widgets/centered_svg_icon.dart';
 
-class AnimatedTimer extends StatefulWidget {
-  const AnimatedTimer({
+class AnimatedOption extends StatefulWidget {
+  const AnimatedOption({
     required this.iconName,
     this.completed,
     super.key,
@@ -18,10 +18,10 @@ class AnimatedTimer extends StatefulWidget {
   final String tag;
 
   @override
-  State<AnimatedTimer> createState() => _AnimatedTimerState();
+  State<AnimatedOption> createState() => _AnimatedOptionState();
 }
 
-class _AnimatedTimerState extends State<AnimatedTimer>
+class _AnimatedOptionState extends State<AnimatedOption>
     with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
   late final Animation<double> _curveAnimation;
@@ -31,14 +31,12 @@ class _AnimatedTimerState extends State<AnimatedTimer>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 25),
+      duration: const Duration(milliseconds: 750),
     );
     _animationController.addStatusListener(_checkStatusUpdates);
     _curveAnimation = _animationController.drive(
       CurveTween(curve: Curves.easeInOut),
     );
-    _handleInitialBehavior();
-
   }
 
   @override
@@ -62,29 +60,25 @@ class _AnimatedTimerState extends State<AnimatedTimer>
     }
   }
 
-  void _handleInitialBehavior() {
-
-    // if (!(widget.completed == true) &&
-    //     _animationController.status != AnimationStatus.completed) {
-
+  void _handleTapDown(TapDownDetails details) {
+    if (!(widget.completed == true) &&
+        _animationController.status != AnimationStatus.completed) {
+      _animationController.forward();
+    } else if (!_showCheckIcon) {
       widget.onCompleted?.call(false);
-      _animationController.value = 1.0;
-      _animationController.reverse();
-    // } else if (!_showCheckIcon) {
-    //   widget.onCompleted?.call(false);
-    //   _animationController.value = 1.0;
-    // }
+      _animationController.value = 0.0;
+    }
   }
 
   void _handleTapCancel() {
     if (_animationController.status != AnimationStatus.completed) {
-      _animationController.forward();
+      _animationController.reverse();
     }
   }
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-        // onTapDown: _handleInitialBehavior,
+        onTapDown: _handleTapDown,
         onTapUp: (_) => _handleTapCancel(),
         onTapCancel: _handleTapCancel,
         child: AnimatedBuilder(
@@ -105,7 +99,7 @@ class _AnimatedTimerState extends State<AnimatedTimer>
               tag: widget.tag,
               child: Stack(
                 children: [
-                  TimerCompletionRing(
+                  OptionCompletionRing(
                     progress: progress,
                   ),
                   Positioned.fill(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:sisyphus_timer/constants/text_styles.dart';
 import 'package:sisyphus_timer/data/models/timers/simple_timer/simple_timer.dart';
+import 'package:sisyphus_timer/presentation/home/animated_circle_option/animated_option.dart';
 import 'package:sisyphus_timer/presentation/theming/app_theme.dart';
-import 'package:sisyphus_timer/presentation/timer/animated_timer.dart';
 
-class SimpleTimerWithName extends StatelessWidget {
-  const SimpleTimerWithName({
+class OptionWithName extends StatelessWidget {
+  const OptionWithName({
     required this.simpleTimer,
     required this.tag,
     super.key,
@@ -23,7 +23,7 @@ class SimpleTimerWithName extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: AnimatedTimer(
+            child: AnimatedOption(
               iconName: simpleTimer.iconName,
               completed: completed,
               onCompleted: onCompleted,

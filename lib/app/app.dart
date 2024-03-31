@@ -29,10 +29,10 @@ class SisyphusTimerApp extends StatelessWidget {
           data: AppThemeData.defaultWithSwatch(AppColors.aqua),
           child: MaterialApp.router(
             title: 'Sisyphus Timer',
-            routeInformationParser: sisRouter.routeInformationParser,
-            routeInformationProvider: sisRouter.routeInformationProvider,
-            backButtonDispatcher: sisRouter.backButtonDispatcher,
-            routerDelegate: sisRouter.routerDelegate,
+            routeInformationParser: sisRouter.goRouter.routeInformationParser,
+            routeInformationProvider: sisRouter.goRouter.routeInformationProvider,
+            backButtonDispatcher: sisRouter.goRouter.backButtonDispatcher,
+            routerDelegate: sisRouter.goRouter.routerDelegate,
             theme: ThemeData(
               fontFamily: 'Times New Roman',
               splashColor: Colors.transparent,

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:sisyphus_timer/data/models/timers/simple_timer/simple_timer.dart';
 import 'package:sisyphus_timer/data/models/timers/sisyphus_timer/sisyphus_timer.dart';
+import 'package:sisyphus_timer/presentation/home/animated_circle_option/option_with_name_loader.dart';
 import 'package:sisyphus_timer/presentation/timer/timer_with_name_loader.dart';
 
 class TimersGrid extends StatelessWidget {
@@ -34,7 +35,7 @@ class TimersGrid extends StatelessWidget {
             itemBuilder: (context, index) {
               final timer = timers[index];
               if (timer is SimpleTimer) {
-                return SimpleTimerWithNameLoader(
+                return OptionWithNameLoader(
                   simpleTimer: timer,
                   tag: timer.tag,
                 );
