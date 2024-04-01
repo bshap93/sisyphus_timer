@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sisyphus_timer/constants/app_assets.dart';
 import 'package:sisyphus_timer/presentation/theming/app_theme.dart';
 import 'package:sisyphus_timer/presentation/timer/timer_completion_ring.dart';
@@ -31,11 +32,11 @@ class _AnimatedTimerState extends State<AnimatedTimer>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 25),
+      duration: const Duration(seconds: 5),
     );
     _animationController.addStatusListener(_checkStatusUpdates);
     _curveAnimation = _animationController.drive(
-      CurveTween(curve: Curves.easeInOut),
+      CurveTween(curve: Curves.linear),
     );
     _handleInitialBehavior();
 
@@ -44,7 +45,10 @@ class _AnimatedTimerState extends State<AnimatedTimer>
   @override
   void dispose() {
     _animationController.removeStatusListener(_checkStatusUpdates);
+
     _animationController.dispose();
+
+
     super.dispose();
   }
 
@@ -78,7 +82,7 @@ class _AnimatedTimerState extends State<AnimatedTimer>
 
   void _handleTapCancel() {
     if (_animationController.status != AnimationStatus.completed) {
-      _animationController.forward();
+      // _animationController.forward();
     }
   }
 
@@ -95,12 +99,16 @@ class _AnimatedTimerState extends State<AnimatedTimer>
             if (widget.completed == null) {
               progress = _curveAnimation.value;
             } else {
-              progress = widget.completed! ? 1.0 : _curveAnimation.value;
+
+              progress = widget.completed! ? 0.0 : _curveAnimation.value;
             }
             // progress = widget.completed ? 1.0 : _curveAnimation.value;
-            final hasCompleted = progress == 1.0;
+            final hasCompleted = progress == 0.0;
             final iconColor =
                 hasCompleted ? themeData.accentNegative : themeData.taskIcon;
+           // if (hasCompleted)  {
+           //   context.pop();
+           // }
             return Hero(
               tag: widget.tag,
               child: Stack(

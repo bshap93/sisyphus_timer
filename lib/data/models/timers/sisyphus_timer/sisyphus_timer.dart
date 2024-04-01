@@ -7,6 +7,8 @@ abstract class SisyphusTimer {
   final String timerId;
   @HiveField(1)
   final String timerName;
+
+  static create({required String name, required String iconName}) {}
   // All inheriting timers should pick up 1+ after HiveField index
   // last in above fields
 }

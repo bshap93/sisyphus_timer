@@ -25,12 +25,7 @@ class _HomePageState extends State<HomePage> {
             iconName: 'assets/plus.svg',
             duration: const Duration(minutes: 5),
           ),
-          SimpleTimer.create(
-            tag: 'rollDownHill',
-            timerName: 'Roll back down the hill, again',
-            duration: const Duration(minutes: 25),
-            iconName: 'assets/plus.svg',
-          ),
+
         ],
       );
 }
