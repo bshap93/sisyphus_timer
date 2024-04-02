@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sisyphus_timer/data/models/timer_preset.dart';
 import 'package:sisyphus_timer/data/models/timers/sisyphus_timer/sisyphus_timer.dart';
 import 'package:sisyphus_timer/presentation/add_task/add_timer_page.dart';
-import 'package:sisyphus_timer/presentation/add_task/task_details_page.dart';
 // * The "add task" flow is composed by these two pages
 class AddTimerRoutes {
   static const root = '/';
@@ -43,4 +42,22 @@ class AddTimerNavigator extends StatelessWidget {
       ),
     );
   }
+}
+
+class TimerDetailsPage extends StatelessWidget {
+  TimerDetailsPage({
+    required this.timer,
+    required this.isNewTimer,
+  }
+      );
+
+  bool isNewTimer;
+  SisyphusTimer timer;
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+
 }

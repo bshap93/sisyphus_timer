@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sisyphus_timer/presentation/theming/app_theme.dart';
 
-import '../../constants/app_assets.dart';
-import '../../constants/app_colors.dart';
+import 'package:sisyphus_timer/constants/app_assets.dart';
+import 'package:sisyphus_timer/constants/app_colors.dart';
 
 class EditTimerButton extends StatelessWidget {
   const EditTimerButton({super.key, this.onPressed});
